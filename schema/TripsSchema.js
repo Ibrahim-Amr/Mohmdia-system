@@ -18,7 +18,7 @@ const tripSchema = yup.object({
     .required("مسار الرحلة مطلوب")
     .label("مسار الرحلة"),
   flightDate: yup.string().required("تاريخ السفر مطلوب").label("تاريخ السفر"),
-  returnDate: yup.string().required("تاريخ العودة مطلوب").label("تاريخ العودة"),
+  returnDate: yup.string().label("تاريخ العودة"),
   created: yup.string().required("تاريخ التنفيذ مطلوب").label("تاريخ التنفيذ"),
   provider: yup.string().required("اسم المنفذ مطلوب").label("اسم المنفذ"),
   providerCompany: yup

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useDownloadExcel } from "react-export-table-to-excel";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ClientContext } from "../../context/ClientContext";
 import { HiOutlineFolderDownload } from "react-icons/hi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -14,7 +14,6 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
   const tableRef = useRef(null);
   const { pathname } = useLocation();
   const { setFilterDate, filterDate } = useContext(ClientContext);
-  const navigate = useNavigate();
 
   function nextPage() {
     setValue((prevState) => ({
@@ -38,7 +37,7 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
     date.setSeconds(seconds);
     const day = date.getDate().toString().padStart(2, "0");
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear().toString(); // get the year
+    const year = date.getFullYear().toString();
     const formattedDate = `${day}-${month}-${year}`;
     return formattedDate;
   }
@@ -53,6 +52,7 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
       alert("ادخل تاريخ لا يتعدي تاريخ اليوم.");
     }
   }
+
   useEffect(() => {
     if (viewAll) {
       setValue((prevState) => ({
@@ -76,9 +76,11 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
     filename: filename,
     sheet: filename,
   });
+
   if (!clients) {
     return <Spinner />;
   }
+
   return (
     <>
       <div className="w-full px-4 mx-auto ">
@@ -177,7 +179,7 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
                   </div>
                 </div>
                 {/* Filter Date */}
-                <div
+                {/* <div
                   className="
 										flex
 										justify-end
@@ -255,7 +257,7 @@ const Table = ({ setClientModal, clients, deleteClient, filename }) => {
                       reset
                     </button>
                   </div>
-                </div>
+                </div> */}
                 {/* <!-- Table --> */}
                 <table
                   ref={tableRef}

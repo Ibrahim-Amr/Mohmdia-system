@@ -10,12 +10,10 @@
 }
 html {
 	scroll-behavior: smooth;
-}
-
-body {
-	scroll-behavior: smooth;
 	font-family: 'Cairo', sans-serif;
 }
+
+
 
 .active {
 	color: rgb(99 102 241);
@@ -32,8 +30,3 @@ body {
 	overflow-y: auto !important;
 }
 
-input[type='date']::-webkit-inner-spin-button,
-input[type='date']::-webkit-calendar-picker-indicator {
-	display: none;
-	-webkit-appearance: none;
-}

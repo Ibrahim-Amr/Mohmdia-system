@@ -24,7 +24,6 @@ const Flight = () => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setClients(snapshot.docs);
     });
-
     return unsubscribe;
   }, []);
 
